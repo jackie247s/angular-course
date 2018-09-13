@@ -24,6 +24,13 @@ export class RecipeDetailComponent implements OnInit {
         this.recipe = this.recipeService.getRecipe(this.index);
       }
     );
+
+    this.recipeService.recipesChanged
+      .subscribe(
+        (recipes: Recipe[]) => {
+          this.recipe = recipes[this.index];
+        }
+      );
   }
 
   addToSl() {
